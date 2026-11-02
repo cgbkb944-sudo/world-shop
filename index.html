@@ -181,24 +181,24 @@
             </div>
         </div>
 
-        <div style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">🔥 Популярные товары</div>
+        <div style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">🔥 Популярные товары (Оплата звёздами ⭐)</div>
         
-        <div class="card" onclick="openProduct('Telegram Звезды ⭐ (100 шт)', '250 ₽', 'Моментальная автовыдача на аккаунт.', '@star_vendor')">
+        <div class="card" onclick="openProduct('Telegram Звезды ⭐ (100 шт)', 250, 'Моментальная автовыдача на аккаунт. Курс: 1 руб = 1 ⭐', '@star_vendor')">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                 <h4 style="margin: 0; font-size: 15px;">Telegram Звезды ⭐ (100 шт)</h4>
-                <span style="font-weight: 800; color: var(--accent-success);">250 ₽</span>
+                <span style="font-weight: 800; color: #f59e0b;">250 ⭐ (250 ₽)</span>
             </div>
             <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 10px 0;">Автовыдача 24/7 • Проверено</p>
-            <button class="btn-main" style="padding: 8px; font-size: 12px;">Купить товар</button>
+            <button class="btn-main" style="background: #f59e0b; color: #000; padding: 8px; font-size: 12px;">Купить за ⭐ Звезды</button>
         </div>
 
-        <div class="card" onclick="openProduct('Telegram Аккаунт 👤 (С отлежкой)', '120 ₽', 'Чистый авторег с отлежкой 30+ дней.', '@accs_shop')">
+        <div class="card" onclick="openProduct('Telegram Аккаунт 👤 (С отлежкой)', 120, 'Чистый авторег с отлежкой 30+ дней. Курс: 1 руб = 1 ⭐', '@accs_shop')">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                 <h4 style="margin: 0; font-size: 15px;">Telegram Аккаунт 👤</h4>
-                <span style="font-weight: 800; color: var(--accent-success);">120 ₽</span>
+                <span style="font-weight: 800; color: #f59e0b;">120 ⭐ (120 ₽)</span>
             </div>
             <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 10px 0;">Формат TData + Ses • С отлежкой</p>
-            <button class="btn-main" style="padding: 8px; font-size: 12px;">Купить товар</button>
+            <button class="btn-main" style="background: #f59e0b; color: #000; padding: 8px; font-size: 12px;">Купить за ⭐ Звезды</button>
         </div>
     </div>
 
@@ -216,7 +216,7 @@
         <div class="hero-balance">
             <span style="font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase;">Ваш баланс</span>
             <h1 style="font-size: 32px; margin: 6px 0 12px 0; font-weight: 900;">0.00 ₽</h1>
-            <button class="btn-main" style="background: #10b981;" onclick="openDepositModal()">💳 Пополнить баланс</button>
+            <button class="btn-main" style="background: #f59e0b; color: #000;" onclick="openDepositModal()">⭐ Пополнить баланс звёздами</button>
         </div>
 
         <div class="card" style="display: flex; align-items: center; gap: 14px;">
@@ -242,8 +242,8 @@
             </div>
         </div>
 
-        <button class="btn-secondary" onclick="tg.showAlert('История ваших заказов и покупок пуста')">📦 История заказов</button>
-        <button class="btn-secondary" onclick="tg.showAlert('История пополнений баланса пуста')">📜 История пополнений</button>
+        <button class="btn-secondary" onclick="tg.showAlert('История ваших заказов пуста')">📦 История заказов</button>
+        <button class="btn-secondary" onclick="tg.showAlert('История пополнений пуста')">📜 История пополнений</button>
 
         <div class="card" style="margin-top: 14px;">
             <h4 style="margin-top: 0; font-size: 14px;">🔑 Верификация продавца</h4>
@@ -266,14 +266,14 @@
                 <div id="seller-pane-stats" class="seller-pane active">
                     <p style="font-size: 12px; font-weight: bold; color: var(--text-muted); margin-bottom: 8px;">Аналитика продаж:</p>
                     <div class="grid-2">
-                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За день: <br><b>0 ₽</b></div>
-                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За неделю: <br><b>0 ₽</b></div>
-                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За месяц: <br><b>0 ₽</b></div>
-                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За год: <br><b>0 ₽</b></div>
+                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За день: <br><b>0 ⭐</b></div>
+                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За неделю: <br><b>0 ⭐</b></div>
+                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За месяц: <br><b>0 ⭐</b></div>
+                        <div style="background: var(--bg-main); padding: 10px; border-radius: 10px; font-size: 12px;">За год: <br><b>0 ⭐</b></div>
                     </div>
                 </div>
 
-                <!-- Управление товарами (Создать, Редактировать, Удалить) -->
+                <!-- Управление товарами -->
                 <div id="seller-pane-products" class="seller-pane">
                     <p style="font-size: 12px; font-weight: bold; color: var(--text-muted); margin-bottom: 6px;">Новый товар:</p>
                     <input type="text" id="new-p-name" placeholder="Название товара">
@@ -282,22 +282,15 @@
                         <option value="accounts">👤 Telegram Аккаунты</option>
                         <option value="services">⚡ Прочие услуги</option>
                     </select>
-                    <select id="new-p-curr">
-                        <option value="RUB">🇷🇺 RUB (₽)</option>
-                        <option value="BYN">🇧🇾 BYN (Br)</option>
-                        <option value="USD">🇺🇸 USD ($)</option>
-                        <option value="TON">💎 TON (Crypto)</option>
-                        <option value="USDT">₮ USDT (Crypto)</option>
-                    </select>
-                    <input type="number" id="new-p-price" placeholder="Цена товара">
+                    <input type="number" id="new-p-price" placeholder="Цена в звездах (⭐)">
                     
                     <button class="btn-main" style="background: var(--accent-primary); margin-bottom: 12px;" onclick="submitToModeration()">📤 Отправить на модерацию</button>
 
                     <hr style="border:0; border-top:1px solid var(--border-color); margin: 12px 0;">
 
                     <p style="font-size: 12px; font-weight: bold; color: var(--text-muted); margin-bottom: 6px;">Управление активными товарами:</p>
-                    <button class="btn-secondary" onclick="tg.showAlert('Режим редактирования товаров открыт')">✏️ Редактировать товар</button>
-                    <button class="btn-secondary" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3);" onclick="tg.showAlert('Товар успешно удален с витрины')">🗑 Удалить товар</button>
+                    <button class="btn-secondary" onclick="tg.showAlert('Режим редактирования открыт')">✏️ Редактировать товар</button>
+                    <button class="btn-secondary" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border-color: rgba(239, 68, 68, 0.3);" onclick="tg.showAlert('Товар удален с витрины')">🗑 Удалить товар</button>
                 </div>
 
                 <!-- Вывод средств -->
@@ -309,7 +302,7 @@
                         <option value="crypto">💎 Криптовалюта (TON / USDT)</option>
                         <option value="card_by">🇧🇾 Карта Республики Беларусь</option>
                     </select>
-                    <input type="text" id="payout-details" placeholder="Номер карты, телефона или кошелька">
+                    <input type="text" id="payout-details" placeholder="Номер карты или кошелька">
                     <input type="number" id="payout-sum" placeholder="Сумма вывода">
                     <button class="btn-main" onclick="requestPayout()">Запросить вывод средств</button>
                 </div>
@@ -317,14 +310,14 @@
         </div>
     </div>
 
-    <!-- Модальное окно пополнения -->
+    <!-- Модальное окно пополнения баланса звездами -->
     <div id="deposit-modal" class="modal" onclick="closeModals(event)">
         <div class="modal-body" onclick="event.stopPropagation()">
-            <h3 style="margin-top:0;">Пополнить баланс 💳</h3>
-            <p style="color: var(--text-muted); font-size: 12px;">Выберите способ оплаты:</p>
-            <button class="btn-secondary" style="background: #24292e; text-align: left; padding: 12px;" onclick="tg.showAlert('Выбрана оплата криптовалютой (TON / USDT)')">💎 Криптовалюта (TON / USDT)</button>
-            <button class="btn-secondary" style="background: #f59e0b; text-align: left; color:#000; font-weight:bold; padding: 12px;" onclick="tg.showAlert('Выбрана оплата через Telegram Stars')">⭐ Telegram Stars</button>
-            <button class="btn-secondary" style="background: #0088cc; text-align: left; padding: 12px;" onclick="tg.showAlert('Выбрана оплата СБП / Российскими картами')">🇷🇺 СБП и Российские карты</button>
+            <h3 style="margin-top:0;">Пополнить баланс ⭐</h3>
+            <p style="color: var(--text-muted); font-size: 12px;">Выберите пакет звезд (1 звезда = 1 рубль):</p>
+            <button class="btn-secondary" style="background: #f59e0b; color:#000; font-weight:bold; padding: 12px;" onclick="payStars(100, 'Пополнение 100 Звезд')">⭐ 100 Звезд (100 ₽)</button>
+            <button class="btn-secondary" style="background: #f59e0b; color:#000; font-weight:bold; padding: 12px;" onclick="payStars(500, 'Пополнение 500 Звезд')">⭐ 500 Звезд (500 ₽)</button>
+            <button class="btn-secondary" style="background: #f59e0b; color:#000; font-weight:bold; padding: 12px;" onclick="payStars(1000, 'Пополнение 1000 Звезд')">⭐ 1000 Звезд (1000 ₽)</button>
             <button class="btn-secondary" style="background: transparent; margin-top: 10px; text-align: center;" onclick="closeModalsDirect()">Закрыть</button>
         </div>
     </div>
@@ -333,10 +326,10 @@
     <div id="product-modal" class="modal" onclick="closeModals(event)">
         <div class="modal-body" onclick="event.stopPropagation()">
             <h3 id="modal-title" style="margin-top:0;"></h3>
-            <p id="modal-price" style="font-size: 20px; font-weight: 800; color: var(--accent-success);"></p>
+            <p id="modal-price" style="font-size: 20px; font-weight: 800; color: #f59e0b;"></p>
             <p style="color: var(--text-muted); font-size: 13px;" id="modal-desc"></p>
             <p style="font-size: 13px;">Продавец: <b id="modal-vendor" style="color: var(--accent-primary);"></b></p>
-            <button class="btn-main" style="margin-top: 15px;" onclick="tg.showAlert('Заказ успешно создан!')">Купить товар</button>
+            <button class="btn-main" style="background: #f59e0b; color: #000; margin-top: 15px;" id="modal-buy-btn">Оплатить звёздами ⭐</button>
             <button class="btn-secondary" style="background: transparent; margin-top: 8px;" onclick="closeModalsDirect()">Закрыть</button>
         </div>
     </div>
@@ -351,6 +344,8 @@
     <script>
         const tg = window.Telegram.WebApp;
         tg.expand();
+
+        const BOT_TOKEN = "9250142789:AAH6Fr-vfuTsSxJmDmpVvygX6VccRQzJdHI";
 
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             const u = tg.initDataUnsafe.user;
@@ -373,12 +368,63 @@
             btn.classList.add('active');
         }
 
-        function openProduct(title, price, desc, vendor) {
+        let currentProductPrice = 0;
+        let currentProductTitle = '';
+
+        function openProduct(title, priceInStars, desc, vendor) {
+            currentProductTitle = title;
+            currentProductPrice = priceInStars;
             document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-price').innerText = price;
+            document.getElementById('modal-price').innerText = priceInStars + ' ⭐ (' + priceInStars + ' ₽)';
             document.getElementById('modal-desc').innerText = desc;
             document.getElementById('modal-vendor').innerText = vendor;
+            
+            document.getElementById('modal-buy-btn.onclick') = null;
+            document.getElementById('modal-buy-btn').onclick = function() {
+                payStars(currentProductPrice, currentProductTitle);
+            };
+            
             document.getElementById('product-modal').style.display = 'flex';
+        }
+
+        // Функция запуска официальной оплаты Telegram Stars через API бота
+        function payStars(amount, description) {
+            closeModalsDirect();
+            
+            // Формируем запрос на создание инвойса к Telegram Bot API
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/createInvoiceLink`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: description,
+                    description: `Оплата товара в World TG Shop по курсу 1 руб = 1 ⭐`,
+                    payload: "shop_payment_" + Date.now(),
+                    currency: "XTR", // Код валюты Telegram Stars
+                    prices: [{ label: "Звезды", amount: amount }] // Сумма в звездах
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    const invoiceLink = data.result;
+                    // Открываем нативный инвойс оплаты звёздами внутри Telegram
+                    tg.openInvoice(invoiceLink, (status) => {
+                        if (status === 'paid') {
+                            tg.showAlert("🎉 Оплата успешно прошла! Спасибо за покупку.");
+                        } else if (status === 'cancelled') {
+                            tg.showAlert("❌ Оплата была отменена.");
+                        } else {
+                            tg.showAlert("⚠️ Статус оплаты: " + status);
+                        }
+                    });
+                } else {
+                    tg.showAlert("Ошибка создания счета: " + (data.description || "Проверьте токен бота"));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                tg.showAlert("Ошибка соединения с сервером Telegram API.");
+            });
         }
 
         function openDepositModal() {
