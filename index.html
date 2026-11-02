@@ -95,7 +95,7 @@
         .btn-secondary:active { background: rgba(255, 255, 255, 0.1); }
                 .admin-tabs {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             background: rgba(0,0,0,0.3);
             padding: 4px;
             border-radius: 14px;
@@ -107,9 +107,9 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 10px 6px;
+            padding: 8px 4px;
             border-radius: 10px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             cursor: pointer;
             text-align: center;
@@ -124,8 +124,7 @@
         .admin-pane.active { display: block; }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
-
+        
         input, select, textarea {
             width: 100%;
             padding: 14px;
@@ -183,7 +182,7 @@
         <div class="card" onclick="openProduct('Telegram Звезды ⭐ (100 шт)', 250, 'Моментальная автовыдача на аккаунт.', '@star_vendor')">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                 <h4 style="margin: 0; font-size: 15px;">Telegram Звезды ⭐ (100 шт)</h4>
-                <span style="font-weight: 800; color: #f59e0b;">250 ⭐ (250 ₽)</span>
+                <span style="font-weight: 800; color: #f59e0b;">250 ₽</span>
             </div>
             <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 10px 0;">Продавец: @star_vendor</p>
             <button class="btn-main" style="background: #f59e0b; color: #000; padding: 8px; font-size: 12px;">Купить товар</button>
@@ -201,7 +200,7 @@
             <button class="btn-main" style="margin-top: 10px;" onclick="tg.showAlert('Ссылка скопирована в буфер обмена!')">🔗 Скопировать ссылку</button>
         </div>
     </div>
-        <!-- ВКЛАДКА 3: ПРОФИЛЬ (ВКЛЮЧАЯ СООБЩЕНИЯ И КАБИНЕТЫ) -->
+        <!-- ВКЛАДКА 3: ПРОФИЛЬ -->
     <div id="tab-profile" class="tab-content">
         <div class="hero-balance">
             <span style="font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase;">Ваш баланс</span>
@@ -217,16 +216,14 @@
             </div>
         </div>
 
-        <!-- РАЗДЕЛ СООБЩЕНИЙ ВНУТРИ ПРОФИЛЯ -->
         <div class="card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <h3 style="margin: 0; font-size: 16px;">📬 Сообщения и заказы</h3>
                 <span class="badge-dot" id="msg-badge" style="position:relative; top:0; right:0; display:inline-block;"></span>
             </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Здесь приходят уведомления о покупках, отзывы и чеки.</p>
             <div id="messages-container">
                 <div style="background: var(--bg-main); padding: 12px; border-radius: 12px; font-size: 12px; color: var(--text-muted);">
-                    У вас пока нет входящих сообщений. После покупки здесь появятся кнопки возврата и отзывов.
+                    У вас пока нет входящих сообщений.
                 </div>
             </div>
         </div>
@@ -237,19 +234,19 @@
             <button class="btn-main" onclick="activateSellerKey()">Войти в кабинет магазина</button>
         </div>
 
-        <!-- КАБИНЕТ ПРОДАВЦА (ДАННЫЕ И БАЛАНС ВИДНЫ ТОЛЬКО ЗДЕСЬ) -->
+        <!-- КАБИНЕТ ПРОДАВЦА -->
         <div id="seller-dashboard" style="display: none; margin-top: 14px;">
             <div class="card" style="border: 1px solid var(--accent-primary);">
                 <h3 style="color: var(--accent-primary); margin-top:0; font-size: 18px;" id="seller-title-box">💼 Кабинет магазина</h3>
                 
                 <div class="grid-2" style="margin-top: 12px;">
                     <div style="background: var(--bg-main); padding: 12px; border-radius: 12px; text-align: center;">
-                        <div style="font-size: 11px; color: var(--text-muted);">Активные объявления</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Активные товары</div>
                         <div style="font-size: 18px; font-weight: 800; color: #f59e0b;">2</div>
                     </div>
                     <div style="background: var(--bg-main); padding: 12px; border-radius: 12px; text-align: center;">
-                        <div style="font-size: 11px; color: var(--text-muted);">Всего продаж</div>
-                        <div style="font-size: 18px; font-weight: 800; color: #10b981;">5</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Продаж</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #10b981;" id="seller-sales-num">5</div>
                     </div>
                 </div>
 
@@ -267,23 +264,24 @@
                     <option value="👤 Telegram Аккаунты">👤 Telegram Аккаунты</option>
                     <option value="⚡ Прочие услуги">⚡ Прочие услуги</option>
                 </select>
-                <input type="number" id="new-p-price" placeholder="Цена (₽ / ⭐)">
-                <button class="btn-main" onclick="submitToModeration()">📤 Отправить товар на модерацию</button>
+                <input type="number" id="new-p-price" placeholder="Цена (₽)">
+                <button class="btn-main" onclick="submitToModeration()">📤 Отправить на модерацию</button>
 
                 <hr style="border:0; border-top:1px solid var(--border-color); margin: 14px 0;">
 
-                <h4 style="font-size: 14px; margin-bottom: 8px;">💸 Вывод средств</h4>
-                <select id="payout-method-sel">
-                    <option value="card">💳 На банковскую карту</option>
-                    <option value="phone">📱 По номеру телефона (СБП)</option>
-                    <option value="crypto">💎 Криптовалюта (Crypto Bot)</option>
-                    <option value="stars">⭐ Telegram Звезды</option>
+                <h4 style="font-size: 14px; margin-bottom: 8px;">📊 Финансовая выписка</h4>
+                <select id="seller-report-period">
+                    <option value="day">За день</option>
+                    <option value="week">За неделю</option>
+                    <option value="month">За месяц</option>
+                    <option value="year">За год</option>
                 </select>
-                <input type="text" id="payout-details" placeholder="Реквизиты вывода">
+                <button class="btn-secondary" onclick="generateStoreReport()">Сформировать выписку</button>
+
+                <hr style="border:0; border-top:1px solid var(--border-color); margin: 14px 0;">
+                <input type="text" id="payout-details" placeholder="Реквизиты вывода (Карта / Телефон / Crypto)">
                 <input type="number" id="payout-sum" placeholder="Сумма вывода">
                 <button class="btn-main" style="background: #10b981;" onclick="requestPayout()">Запросить вывод средств</button>
-
-                <button class="btn-secondary" style="margin-top: 14px;" onclick="requestStoreDetails()">📊 Запросить детализацию магазина</button>
             </div>
         </div>
                 <!-- ПАНЕЛЬ ВЛАДЕЛЬЦА -->
@@ -294,33 +292,35 @@
                 <div class="admin-tabs">
                     <button class="admin-tab-btn active" onclick="switchAdminTab('control', this)">⚙️ Управление</button>
                     <button class="admin-tab-btn" onclick="switchAdminTab('moderation', this)">🛡 Модерация</button>
-                    <button class="admin-tab-btn" onclick="switchAdminTab('stats', this)">📊 Статистика</button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('stores', this)">🏪 Магазины</button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('workers', this)">👥 Работники</button>
                     <button class="admin-tab-btn" onclick="switchAdminTab('broadcast', this)">📢 Рассылка</button>
                 </div>
 
                 <div id="admin-pane-control" class="admin-pane active">
                     <button class="btn-secondary" style="background: rgba(245,158,11,0.15); color:#f59e0b;" onclick="createStoreKeyPrompt()">➕ Создать магазин и ключ</button>
-                    <button class="btn-secondary" style="background: rgba(16,185,129,0.15); color:#10b981;" onclick="assignAdminPrompt()">🛡 Назначить сотрудника</button>
-                    <button class="btn-secondary" style="background: rgba(239, 68, 68, 0.15); color: #f87171;" onclick="warnRegisteredSeller()">⚠️ Выдать предупреждение магазину</button>
+                    <button class="btn-secondary" style="background: rgba(16,185,129,0.15); color:#10b981;" onclick="assignAdminPrompt()">🛡 Назначить работника</button>
+                    <button class="btn-secondary" style="background: rgba(239, 68, 68, 0.15); color: #f87171;" onclick="warnRegisteredSeller()">⚠️ Предупреждение магазину</button>
                 </div>
 
                 <div id="admin-pane-moderation" class="admin-pane">
-                    <div id="moderation-queue-box"><p style="font-size: 12px; color: var(--text-muted);">Нет объектов на проверке.</p></div>
+                    <div id="moderation-queue-box"><p style="font-size: 12px; color: var(--text-muted);">Нет объявлений и заявок на проверке.</p></div>
                 </div>
 
-                <div id="admin-pane-stats" class="admin-pane">
-                    <div style="background: var(--bg-main); padding: 12px; border-radius: 12px; font-size: 12px; margin-bottom: 8px;">
-                        📋 Всего активных магазинов в базе: <b id="total-stores-count">1</b>
-                    </div>
-                    <div style="background: var(--bg-main); padding: 12px; border-radius: 12px; font-size: 12px;" id="admin-staff-stats">
-                        🛡 Сотрудники и модераторы: <b>0</b><br>
-                        • Удалено объявлений: <b>0</b><br>
-                        • Рассмотрено жалоб: <b>0</b>
-                    </div>
+                <!-- ВКЛАДКА МАГАЗИНЫ С БАЛАНСОМ И КЛИКАБЕЛЬНЫМИ КАРТОЧКАМИ -->
+                <div id="admin-pane-stores" class="admin-pane">
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Нажмите на название магазина для полной информации:</p>
+                    <div id="admin-stores-list" style="max-height: 250px; overflow-y: auto;"></div>
+                </div>
+
+                <!-- ВКЛАДКА РАБОТНИКИ -->
+                <div id="admin-pane-workers" class="admin-pane">
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Список сотрудников:</p>
+                    <div id="admin-workers-list" style="max-height: 250px; overflow-y: auto;"></div>
                 </div>
 
                 <div id="admin-pane-broadcast" class="admin-pane">
-                    <textarea id="broadcast-text" rows="3" placeholder="Текст рассылки во вкладку «Сообщения»..."></textarea>
+                    <textarea id="broadcast-text" rows="3" placeholder="Текст рассылки..."></textarea>
                     <button class="btn-main" style="background: #f59e0b; color:#000;" onclick="sendBroadcast()">📢 Запустить рассылку</button>
                 </div>
             </div>
@@ -345,13 +345,13 @@
             <p id="modal-price" style="font-size: 20px; font-weight: 800; color: #f59e0b;"></p>
             <p style="color: var(--text-muted); font-size: 13px;" id="modal-desc"></p>
             <p style="font-size: 13px;">Продавец: <b id="modal-vendor" style="color: var(--accent-primary);"></b></p>
-            <button class="btn-main" style="background: #f59e0b; color: #000;" id="modal-buy-stars">Оплатить звёздами ⭐</button>
-            <button class="btn-secondary" style="background: #0088cc; color: #fff; margin-top: 8px;" id="modal-buy-crypto">Оплатить через Crypto Bot 💎</button>
+            
+            <button class="btn-main" style="background: #f59e0b; color: #000; margin-top: 15px;" onclick="executePurchase()">🛒 Купить товар</button>
             <button class="btn-secondary" style="background: transparent; margin-top: 6px;" onclick="closeModalsDirect()">Закрыть</button>
         </div>
     </div>
 
-    <!-- КРАСИВАЯ НИЖНЯЯ НАВИГАЦИЯ -->
+    <!-- НИЖНЯЯ НАВИГАЦИЯ -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="switchTab('home', this)"><div class="nav-icon">🏠</div>Главная</button>
         <button class="nav-item" onclick="switchTab('ref', this)"><div class="nav-icon">🤝</div>Рефералы</button>
@@ -365,17 +365,11 @@
         const CRYPTO_TOKEN = "665752:AAHhZN17zLqpDRWcLG2woKIUDMRv0wdRQsa";
         const OWNER_ID = 8127900151;
 
-        // Загрузка сохраненных магазинов и статистики из localStorage
+        let userBalance = 500.00;
         let registeredStores = JSON.parse(localStorage.getItem('wtg_stores')) || {
-            "WTG-SELL-TEST999": { name: "Star Vendor Shop", hasBot: "Да", username: "@star_vendor", id: "12345678", balance: 1250 }
+            "WTG-SELL-TEST999": { key: "WTG-SELL-TEST999", name: "Star Vendor Shop", hasBot: "Да", username: "@star_vendor", id: "12345678", balance: 1250, sales: 5, createdDate: "2026-09-01" }
         };
-
-        let staffStats = JSON.parse(localStorage.getItem('wtg_staff_stats')) || {
-            totalStaff: 0,
-            deletedAds: 0,
-            handledReports: 0
-        };
-
+        let staffList = JSON.parse(localStorage.getItem('wtg_staff')) || [];
         let pendingQueue = [];
         let storeWarnings = {};
         let userTgUser = "@user_test";
@@ -393,15 +387,70 @@
             }
         }
 
-        function updateStaffStatsDisplay() {
-            document.getElementById('total-stores-count').innerText = Object.keys(registeredStores).length;
-            document.getElementById('admin-staff-stats').innerHTML = `
-                🛡 Назначено сотрудников: <b>${staffStats.totalStaff}</b><br>
-                • Удалено объявлений: <b>${staffStats.deletedAds}</b><br>
-                • Рассмотрено жалоб: <b>${staffStats.handledReports}</b>
-            `;
+        function updateBalanceDisplay() {
+            document.getElementById('user-balance-val').innerText = userBalance.toFixed(2) + " ₽";
         }
-        updateStaffStatsDisplay();
+        updateBalanceDisplay();
+
+        function renderAdminLists() {
+            let storesHtml = '';
+            for (let k in registeredStores) {
+                let s = registeredStores[k];
+                storesHtml += `<div style="background: var(--bg-main); padding: 10px; border-radius: 10px; margin-bottom: 6px; font-size: 11px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b style="color: var(--accent-primary); cursor: pointer; text-decoration: underline;" onclick="showStoreDetailsModal('${k}')">${s.name}</b><br>
+                        Продаж: ${s.sales}
+                    </div>
+                    <div style="text-align: right;">
+                        <b style="color: #10b981;">${s.balance} ₽</b><br>
+                        <button class="btn-main" style="padding: 2px 6px; font-size: 9px; margin-top: 2px; background: #f59e0b; color:#000;" onclick="adminChangeStoreBalance('${k}')">⚖️ Баланс</button>
+                    </div>
+                </div>`;
+            }
+            document.getElementById('admin-stores-list').innerHTML = storesHtml || 'Нет магазинов.';
+
+            let staffHtml = '';
+            staffList.forEach(st => {
+                staffHtml += `<div style="background: var(--bg-main); padding: 10px; border-radius: 10px; margin-bottom: 6px; font-size: 11px;">
+                    ID: <b>${st.id}</b> | Ранг: <span style="color:#f59e0b;">${st.rank}</span>
+                </div>`;
+            });
+            document.getElementById('admin-workers-list').innerHTML = staffHtml || 'Нет работников.';
+        }
+        renderAdminLists();
+
+        // Полная информация о магазине для владельца при нажатии на название
+        function showStoreDetailsModal(storeKey) {
+            const s = registeredStores[storeKey];
+            if (!s) return;
+            tg.showAlert(`🏪 Информация о магазине:\n\n• Название: ${s.name}\n• Баланс: ${s.balance} ₽\n• Успешных продаж: ${s.sales}\n• Свой бот: ${s.hasBot}\n• Продавец: ${s.username} (ID: ${s.id})\n• В проекте с: ${s.createdDate || '2026-09-01'}`);
+        }
+
+        function adminChangeStoreBalance(storeKey) {
+            const store = registeredStores[storeKey];
+            if (!store) return;
+            const amountStr = prompt(`Текущий баланс магазина "${store.name}": ${store.balance} ₽\nВведите сумму изменения (+500 или -200):`);
+            if (!amountStr) return;
+            const diff = parseFloat(amountStr);
+            if (isNaN(diff)) { tg.showAlert("❌ Неверная сумма!"); return; }
+
+            store.balance += diff;
+            localStorage.setItem('wtg_stores', JSON.stringify(registeredStores));
+            renderAdminLists();
+
+            const msgBox = document.getElementById('messages-container');
+            msgBox.innerHTML = `
+                <div class="card" style="border: 1px solid #f59e0b; margin-bottom: 10px;">
+                    <h4 style="margin-top:0; color: #f59e0b;">💰 Баланс вашего магазина изменен</h4>
+                    <p style="font-size: 12px; margin: 4px 0;">Магазин: <b>${store.name}</b></p>
+                    <p style="font-size: 12px; margin: 4px 0;">Изменение: <b>${diff > 0 ? '+' + diff : diff} ₽</b></p>
+                    <p style="font-size: 12px; margin: 4px 0;">Новый баланс: <b>${store.balance} ₽</b></p>
+                </div>
+            ` + msgBox.innerHTML;
+            document.getElementById('msg-badge').style.display = 'block';
+
+            tg.showAlert(`✅ Баланс магазина "${store.name}" изменен на ${diff} ₽! Уведомление отправлено продавцу.`);
+        }
 
         function switchTab(tabId, element) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -416,6 +465,7 @@
             document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('admin-pane-' + paneId).classList.add('active');
             btn.classList.add('active');
+            if(paneId === 'stores' || paneId === 'workers') renderAdminLists();
         }
 
         let currentProductPrice = 0;
@@ -428,27 +478,37 @@
             currentVendor = vendor;
 
             document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-price').innerText = priceInStars + ' ⭐ (' + priceInStars + ' ₽)';
+            document.getElementById('modal-price').innerText = priceInStars + ' ₽';
             document.getElementById('modal-desc').innerText = desc;
             document.getElementById('modal-vendor').innerText = vendor;
-            
-            document.getElementById('modal-buy-stars').onclick = function() { payStars(currentProductPrice, currentProductTitle); };
-            document.getElementById('modal-buy-crypto').onclick = function() { createCryptoInvoice(currentProductPrice, currentProductTitle); };
             document.getElementById('product-modal').style.display = 'flex';
         }
 
         function openDepositModal() { document.getElementById('deposit-modal').style.display = 'flex'; }
 
+        function executePurchase() {
+            closeModalsDirect();
+            if (userBalance >= currentProductPrice) {
+                userBalance -= currentProductPrice;
+                updateBalanceDisplay();
+                simulatedPurchaseSuccess(currentProductTitle, currentVendor);
+                tg.showAlert("🎉 Покупка успешно совершена!");
+            } else {
+                tg.showAlert("⚠️ Недостаточно средств на балансе! Пожалуйста, пополните баланс.");
+                openDepositModal();
+            }
+        }
+
         function payWithCryptoBot() {
             const rub = parseFloat(document.getElementById('custom-deposit-amount').value);
-            if (isNaN(rub) || rub < 10) { tg.showAlert("⚠️ Минимальная сумма пополнения: 10 ₽"); return; }
+            if (isNaN(rub) || rub < 10) { tg.showAlert("⚠️ Минимум 10 ₽"); return; }
             closeModalsDirect();
-            const usdt = (rub / 100).toFixed(2); // Курс 1 USDT = 100 ₽
+            const usdt = (rub / 100).toFixed(2); // 1 USDT = 100 ₽
             
             fetch('https://pay.crypt.bot/api/createInvoice', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Crypto-Pay-API-Token': CRYPTO_TOKEN },
-                body: JSON.stringify({ asset: 'USDT', amount: Math.max(parseFloat(usdt), 0.1).toString(), description: "Пополнение баланса World TG Shop", payload: 'deposit_' + Date.now() })
+                body: JSON.stringify({ asset: 'USDT', amount: Math.max(parseFloat(usdt), 0.1).toString(), description: "Пополнение баланса", payload: 'dep_' + Date.now() })
             })
             .then(res => res.json())
             .then(data => {
@@ -460,7 +520,7 @@
 
         function payStars(amount, description) {
             const stars = parseInt(amount);
-            if (isNaN(stars) || stars < 10) { tg.showAlert("⚠️ Минимально: 10 ⭐ (1 Звезда = 1 ₽)"); return; }
+            if (isNaN(stars) || stars < 10) { tg.showAlert("⚠️ Минимум 10 ⭐"); return; }
             closeModalsDirect();
 
             fetch(`https://api.telegram.org/bot${BOT_TOKEN}/createInvoiceLink`, {
@@ -473,43 +533,29 @@
                 if (data.ok) {
                     tg.openInvoice(data.result, (status) => {
                         if (status === 'paid') {
-                            tg.showAlert("🎉 Баланс успешно пополнен!");
-                            simulatedPurchaseSuccess(currentProductTitle, currentVendor);
+                            userBalance += stars;
+                            updateBalanceDisplay();
+                            tg.showAlert("🎉 Баланс успешно пополнен на " + stars + " ₽!");
                         }
                     });
                 }
             });
         }
 
+        function payWithStarsModal() {
+            const rub = parseFloat(document.getElementById('custom-deposit-amount').value);
+            payStars(rub, "Пополнение баланса World TG Shop");
+        }
+
         function simulatedPurchaseSuccess(prodName, vendor) {
             const msgBox = document.getElementById('messages-container');
             msgBox.innerHTML = `
                 <div class="card" style="border: 1px solid var(--accent-success); margin-bottom: 10px;">
-                    <h4 style="margin-top:0; color: var(--accent-success);">📦 Покупка успешно совершена!</h4>
+                    <h4 style="margin-top:0; color: var(--accent-success);">📦 Покупка совершена!</h4>
                     <p style="font-size: 12px; margin: 4px 0;">Товар: <b>${prodName}</b></p>
-                    <p style="font-size: 12px; margin: 4px 0;">Продавец: ${vendor}</p>
-                    <div style="display:flex; gap: 8px; margin-top: 10px;">
-                        <button class="btn-secondary" style="background:#f59e0b; color:#000; font-size:11px; margin:0;" onclick="leaveReviewPrompt('${vendor}')">⭐ Оставить отзыв</button>
-                        <button class="btn-secondary" style="background:rgba(239,68,68,0.2); color:#f87171; font-size:11px; margin:0;" onclick="requestReturnProduct('${prodName}')">↩️ Вернуть деньги</button>
-                    </div>
                 </div>
             ` + msgBox.innerHTML;
             document.getElementById('msg-badge').style.display = 'block';
-        }
-
-        function leaveReviewPrompt(vendor) {
-            const reviewText = prompt("Введите текст вашего отзыва:");
-            if (!reviewText) return;
-            const stars = prompt("Поставьте оценку от 1 до 5 звезд:");
-            tg.showAlert(`✅ Спасибо! Ваш отзыв (${stars}⭐) успешно опубликован на странице продавца ${vendor}.`);
-        }
-
-        function requestReturnProduct(prodName) {
-            const proof = prompt("Укажите причину и ссылку на скриншоты для возврата средств:");
-            if (!proof) return;
-            pendingQueue.push({ type: 'return', prod: prodName, user: userTgUser, proof: proof });
-            renderModerationQueue();
-            tg.showAlert("↩️ Запрос на возврат отправлен администрации на модерацию!");
         }
 
         function closeModals(e) { if(e.target.classList.contains('modal')) closeModalsDirect(); }
@@ -524,88 +570,54 @@
                 document.getElementById('seller-dashboard').style.display = "block";
                 document.getElementById('seller-title-box').innerText = `💼 Кабинет: ${activeStore.name}`;
                 document.getElementById('seller-balance-val').innerText = activeStore.balance.toFixed(2) + " ₽";
-                tg.showAlert(`✅ Успешный вход в магазин "${activeStore.name}"!`);
+                document.getElementById('seller-sales-num').innerText = activeStore.sales;
+                tg.showAlert(`✅ Вход в магазин "${activeStore.name}" выполнен!`);
             } else {
-                tg.showAlert("❌ Ошибка: Введен неверный ключ продавца! Проверьте правильность или обратитесь к администратору.");
+                tg.showAlert("❌ Неверный ключ продавца!");
             }
         }
 
         function createStoreKeyPrompt() {
-            const storeName = prompt("Введите название магазина:");
+            const storeName = prompt("Название магазина:");
             if (!storeName) return;
-            const hasBot = prompt("Есть ли у вас свой бот? (Да / Нет):");
+            const hasBot = prompt("Свой бот? (Да / Нет):");
             if (!hasBot) return;
-            const username = prompt("Введите Telegram Username продавца (@username):");
+            const username = prompt("Telegram Username (@username):");
             if (!username) return;
-            const tgId = prompt("Введите Telegram ID продавца:");
+            const tgId = prompt("Telegram ID продавца:");
             if (!tgId) return;
 
             const generatedKey = "WTG-SELL-" + Math.floor(Math.random() * 90000 + 10000);
-            registeredStores[generatedKey] = { name: storeName, hasBot: hasBot, username: username, id: tgId, balance: 0 };
-            
-            // Сохраняем в постоянную память
+            const currentDate = new Date().toISOString().slice(0, 10);
+            registeredStores[generatedKey] = { key: generatedKey, name: storeName, hasBot, username, id: tgId, balance: 0, sales: 0, createdDate };
             localStorage.setItem('wtg_stores', JSON.stringify(registeredStores));
-            updateStaffStatsDisplay();
+            renderAdminLists();
 
-            tg.showAlert(`✅ Магазин успешно зарегистрирован и сохранен в системе!\n\nКлюч: ${generatedKey}\nНазвание: ${storeName}\nПродавец: ${username} (ID: ${tgId})`);
+            tg.showAlert(`✅ Магазин создан!\nКлюч: ${generatedKey}\nНазвание: ${storeName}`);
         }
 
         function assignAdminPrompt() {
-            const adminId = prompt("Введите Telegram ID сотрудника:");
+            const adminId = prompt("Telegram ID сотрудника:");
             if (!adminId) return;
-            const rank = prompt("Введите ранг (младший модератор, старший модератор, администратор, совладелец):");
+            const rank = prompt("Ранг (модератор, администратор, совладелец):");
             if (!rank) return;
 
-            staffStats.totalStaff++;
-            staffStats.handledReports++;
-            localStorage.setItem('wtg_staff_stats', JSON.stringify(staffStats));
-            updateStaffStatsDisplay();
-
-            tg.showAlert(`✅ Сотрудник ${adminId} успешно назначен на должность: ${rank}!`);
+            staffList.push({ id: adminId, rank });
+            localStorage.setItem('wtg_staff', JSON.stringify(staffList));
+            renderAdminLists();
+            tg.showAlert(`✅ Сотрудник ${adminId} назначен (${rank})!`);
         }
 
-        // Проверка существования магазина перед выдачей предупреждения
         function warnRegisteredSeller() {
-            const storeName = prompt("Введите точное название магазина для предупреждения:");
+            const storeName = prompt("Точное название магазина для предупреждения:");
             if (!storeName) return;
-
-            let found = false;
-            for (let k in registeredStores) {
-                if (registeredStores[k].name.toLowerCase() === storeName.toLowerCase()) {
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found) {
-                tg.showAlert(`❌ Ошибка: Магазин с названием "${storeName}" не существует в базе данных! Предупреждение не может быть выдано.`);
-                return;
-            }
-
-            if (!storeWarnings[storeName]) storeWarnings[storeName] = 0;
-            storeWarnings[storeName]++;
-            
-            staffStats.handledReports++;
-            localStorage.setItem('wtg_staff_stats', JSON.stringify(staffStats));
-            updateStaffStatsDisplay();
-
-            tg.showAlert(`⚠️ Магазину "${storeName}" официально выдано предупреждение. Всего нарушений: ${storeWarnings[storeName]}/3.`);
+            tg.showAlert(`⚠️ Магазину "${storeName}" выдано предупреждение.`);
         }
 
-        function requestStoreDetails() {
+        function generateStoreReport() {
             if (!activeStore) return;
-            const detailsHtml = `
-                <div class="card" style="border: 1px solid var(--accent-primary); margin-top: 10px;">
-                    <h4 style="margin-top:0; color: var(--accent-primary);">📊 Детализация магазина: ${activeStore.name}</h4>
-                    • Владелец: ${activeStore.username} (ID: ${activeStore.id})<br>
-                    • Свой бот: ${activeStore.hasBot}<br>
-                    • Текущий баланс: ${activeStore.balance} ₽<br>
-                    • Статус: Активен ✅
-                </div>
-            `;
-            document.getElementById('messages-container').innerHTML = detailsHtml + document.getElementById('messages-container').innerHTML;
-            document.getElementById('msg-badge').style.display = 'block';
-            tg.showAlert("📊 Детализация отправлена во вкладку сообщений в вашем профиле!");
+            const period = document.getElementById('seller-report-period').value;
+            tg.showAlert(`📊 Выписка за (${period}):\n• Продаж: ${activeStore.sales}\n• Общий оборот: ${activeStore.balance} ₽\n• Баланс: ${activeStore.balance} ₽`);
         }
 
         function submitToModeration() {
@@ -616,23 +628,44 @@
 
             pendingQueue.push({ type: 'product', name, cat, price, vendor: activeStore ? activeStore.name : "@shop" });
             renderModerationQueue();
-            tg.showAlert("✅ Товар отправлен на модерацию владельцу!");
+            
+            tg.showAlert("✅ Товар успешно отправлен на модерацию администратору!");
             document.getElementById('new-p-name').value = '';
             document.getElementById('new-p-price').value = '';
+        }
+
+        function requestPayout() {
+            const details = document.getElementById('payout-details').value;
+            const sum = document.getElementById('payout-sum').value;
+            if(!details || !sum) { tg.showAlert("Заполните реквизиты и сумму!"); return; }
+
+            pendingQueue.push({ type: 'payout', store: activeStore ? activeStore.name : "Магазин", details, sum });
+            renderModerationQueue();
+
+            tg.showAlert("💸 Заявка на вывод средств успешно отправлена владельцу на модерацию!");
+            document.getElementById('payout-sum').value = '';
+            document.getElementById('payout-details').value = '';
         }
 
         function renderModerationQueue() {
             const box = document.getElementById('moderation-queue-box');
             if(pendingQueue.length === 0) {
-                box.innerHTML = '<p style="font-size: 12px; color: var(--text-muted);">Нет объектов на проверке.</p>';
+                box.innerHTML = '<p style="font-size: 12px; color: var(--text-muted);">Нет объявлений и заявок на проверке.</p>';
                 return;
             }
             let html = '';
             pendingQueue.forEach((item, idx) => {
-                html += `<div style="background: var(--bg-main); padding: 10px; border-radius: 10px; margin-bottom: 8px; font-size: 12px;">
-                    <b>${item.type === 'product' ? '📦 Товар: ' + item.name : '↩️ Возврат по: ' + item.prod}</b><br>
-                    <button class="btn-main" style="padding: 6px; font-size: 11px; margin-top: 6px; background: #10b981;" onclick="approveItem(${idx})">✅ Одобрить</button>
-                </div>`;
+                if(item.type === 'product') {
+                    html += `<div style="background: var(--bg-main); padding: 10px; border-radius: 10px; margin-bottom: 8px; font-size: 12px;">
+                        <b>📦 Товар: ${item.name}</b> (${item.price} ₽)<br>
+                        <button class="btn-main" style="padding: 6px; font-size: 11px; margin-top: 6px; background: #10b981;" onclick="approveItem(${idx})">✅ Подтвердить товар</button>
+                    </div>`;
+                } else {
+                    html += `<div style="background: var(--bg-main); padding: 10px; border-radius: 10px; margin-bottom: 8px; font-size: 12px;">
+                        <b>💸 Заявка на вывод: ${item.sum} ₽</b><br>Магазин: ${item.store}<br>Реквизиты: ${item.details}<br>
+                        <button class="btn-main" style="padding: 6px; font-size: 11px; margin-top: 6px; background: #10b981;" onclick="approveItem(${idx})">✅ Одобрить вывод</button>
+                    </div>`;
+                }
             });
             box.innerHTML = html;
         }
@@ -640,9 +673,6 @@
         function approveItem(idx) {
             const item = pendingQueue.splice(idx, 1)[0];
             renderModerationQueue();
-            staffStats.deletedAds++; // учет модерации
-            localStorage.setItem('wtg_staff_stats', JSON.stringify(staffStats));
-            updateStaffStatsDisplay();
 
             if(item.type === 'product') {
                 const catalog = document.getElementById('dynamic-catalog');
@@ -651,26 +681,16 @@
                 card.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                         <h4 style="margin: 0; font-size: 15px;">${item.name}</h4>
-                        <span style="font-weight: 800; color: #f59e0b;">${item.price} ⭐ (${item.price} ₽)</span>
+                        <span style="font-weight: 800; color: #f59e0b;">${item.price} ₽</span>
                     </div>
                     <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 10px 0;">Категория: ${item.cat} • Продавец: ${item.vendor}</p>
                     <button class="btn-main" style="background: #f59e0b; color: #000; padding: 8px; font-size: 12px;" onclick="openProduct('${item.name}', ${item.price}, 'Категория: ${item.cat}', '${item.vendor}')">Купить товар</button>
                 `;
                 catalog.appendChild(card);
-                tg.showAlert("✅ Товар одобрен и опубликован на витрине!");
+                tg.showAlert("✅ Объявление подтверждено и опубликовано!");
             } else {
-                tg.showAlert("✅ Возврат средств успешно одобрен владельцем!");
+                tg.showAlert("✅ Заявка на вывод средств успешно одобрена!");
             }
-        }
-
-        function requestPayout() {
-            const method = document.getElementById('payout-method-sel').value;
-            const details = document.getElementById('payout-details').value;
-            const sum = document.getElementById('payout-sum').value;
-            if(!details || !sum) { tg.showAlert("Заполните реквизиты и сумму!"); return; }
-            tg.showAlert(`💸 Заявка на вывод ${sum} ₽ через (${method}) отправлена!`);
-            document.getElementById('payout-sum').value = '';
-            document.getElementById('payout-details').value = '';
         }
 
         function sendBroadcast() {
@@ -684,7 +704,7 @@
             ` + document.getElementById('messages-container').innerHTML;
 
             document.getElementById('msg-badge').style.display = 'block';
-            tg.showAlert("📢 Рассылка успешно отправлена во вкладку «Сообщения» в профиле!");
+            tg.showAlert("📢 Рассылка отправлена во вкладку «Сообщения»!");
             document.getElementById('broadcast-text').value = '';
         }
     </script>
